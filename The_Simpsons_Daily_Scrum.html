@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<!--
+Created by Andreas Loizou
+-->
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+<style class="cp-pen-styles">
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+    a {
+        color: #337ab7;
+    }
+
+    a:visited {
+        color: #337ab7;
+    }
+
+    .page-wrap {
+        min-height: 100%;
+        /* equal to footer height */
+        margin-bottom: -45px;
+    }
+
+    .page-wrap:after {
+        content: "";
+        display: block;
+    }
+
+    @media all and (min-width: 960px) {
+        body {
+            font-size: 40px;
+        }
+    }
+
+    @media all and (max-width: 959px) and (min-width: 600px) {
+        body {
+            font-size: 5vw;
+        }
+    }
+
+    @media all and (max-width: 599px) and (min-width: 50px) {
+        body {
+            font-size: 4vw;
+        }
+    }
+
+    html {
+        background-image: url("background.jpg");
+        background-size: cover;
+    }
+
+    body {
+        font-family: 'Open Sans', sans-serif;
+        text-align: center;
+        font-weight: 600;
+        overflow: hidden;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .text {
+        position: absolute;
+        width: 60%;
+        left: 20%;
+        right: -20%;
+        top: 40%;
+    }
+
+    p {
+        display: inline-block;
+        vertical-align: top;
+        margin: 0;
+    }
+
+    .direction,
+    .person {
+        position: inherit;
+        display: none;
+        opacity: 1;
+    }
+
+    .visible {
+        display: inline;
+    }
+
+    .wisteria {
+        color: #8e44ad;
+    }
+
+    .belize {
+        color: #2980b9;
+    }
+
+    .pomegranate {
+        color: #c0392b;
+    }
+
+    .green {
+        color: #16a085;
+    }
+
+    .midnight {
+        color: #2c3e50;
+    }
+
+    .site-footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 45px;
+        /* Height of the footer */
+        text-align: center;
+    }
+
+    .site-footer>p {
+        font-size: 12px;
+    }
+</style>
+</head>
+
+<body>
+    <div class="page-wrap">
+        <div class="text">
+            <!--persons will be loaded here-->
+            <p class="all-persons">
+            </p>
+            </br>
+            <p class="all-directions">
+            </p>
+        </div>
+    </div>
+    <footer class="site-footer">
+        <p>Another thing made with <span class="pomegranate">❤︎</span> by <a href="https://www.linkedin.com/in/loizouandreas/">Andreas Loizou</a>.
+        </p>
+    </footer>
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+    var persons = ["Homer Simpson",
+        "Merge Simpson",
+        "Bart Simpson",
+        "Lisa Simpson",
+        "Maggie Simpson",
+    ]; //contains all persons.
+    var directions = ["Clockwise direction",
+        "Anticlockwise direction"
+    ]; //contains directions.
+
+    $.each(persons, function(i) {
+        $('.all-persons').append('<div class="person">' + persons[i] + '</div>');
+    });
+    $.each(directions, function(i) {
+        $('.all-directions').append('<div class="direction">' + directions[i] + '</div>');
+    });
+
+    var colors = ["wisteria", "belize", "pomegranate", "green", "midnight"];
+
+    var currentPerson = Math.floor((Math.random() * persons.length)) + 1;
+    var currentDirection = Math.floor((Math.random() * directions.length)) + 1;
+    var colorIndex = Math.floor((Math.random() * colors.length));
+
+    $('.person:nth-child(' + currentPerson + ')').addClass(colors[colorIndex]);
+    $('.person:nth-child(' + currentPerson + ')').addClass("visible");
+    $('.direction:nth-child(' + currentDirection + ')').addClass(colors[colorIndex]);
+    $('.direction:nth-child(' + currentDirection + ')').addClass("visible");
+</script>
