@@ -1,172 +1,239 @@
 <!DOCTYPE html>
 <!--
 Created by Andreas Loizou
+
+ _        _    ____ _  _______ ____
+| |      / \  / ___| |/ /___ /|  _ \
+| |     / _ \| |   | ' /  |_ \| |_) |
+| |___ / ___ \ |___| . \ ___) |  _ <
+|_____/_/   \_\____|_|\_\____/|_| \_\
 -->
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet">
-<style class="cp-pen-styles">
-    @import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
-    a {
-        color: #337ab7;
-    }
+<style>
+	@import url(https://fonts.googleapis.com/css?family=Open+Sans:600);
+	a,
+	a:visited {
+		color: #337ab7;
+	}
 
-    a:visited {
-        color: #337ab7;
-    }
+	.page-wrap {
+		min-height: 100%;
+		/* equal to footer height */
+		margin-bottom: -45px;
+	}
 
-    .page-wrap {
-        min-height: 100%;
-        /* equal to footer height */
-        margin-bottom: -45px;
-    }
+	.page-wrap:after {
+		content: "";
+		display: block;
+	}
 
-    .page-wrap:after {
-        content: "";
-        display: block;
-    }
+	html {
+		background-position: right center; 
+		background-attachment: fixed;
 
-    @media all and (min-width: 960px) {
-        body {
-            font-size: 40px;
-        }
-    }
+		background-image: url("background.jpg");
+		/*background-size: cover;*/
+		background-color:#fed420;
+		background-repeat:no-repeat;
+		background-size:30%;
+	}
 
-    @media all and (max-width: 959px) and (min-width: 600px) {
-        body {
-            font-size: 5vw;
-        }
-    }
+	body {
+		font-family: 'Open Sans', sans-serif;
+		text-align: center;
+		font-weight: 600;
+		overflow: hidden;
+		/*-webkit-background-size: cover;
+		-moz-background-size: cover;
+		-o-background-size: cover;
+		background-size: cover;*/
+	}
 
-    @media all and (max-width: 599px) and (min-width: 50px) {
-        body {
-            font-size: 4vw;
-        }
-    }
+	.text {
+		position: absolute;
+		width: 60%;
+		left: 20%;
+		right: -20%;
+		top: 40%;
+	}
 
-    html {
-        background-image: url("background.jpg");
-        background-size: cover;
-    }
+	p {
+		display: inline-block;
+		vertical-align: top;
+		margin: 0;
+	}
 
-    body {
-        font-family: 'Open Sans', sans-serif;
-        text-align: center;
-        font-weight: 600;
-        overflow: hidden;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-    }
+	.direction,
+	.person {
+		position: inherit;
+		display: none;
+		opacity: 1;
+	}
 
-    .text {
-        position: absolute;
-        width: 60%;
-        left: 20%;
-        right: -20%;
-        top: 40%;
-    }
+	.visible {
+		display: inline;
+	}
 
-    p {
-        display: inline-block;
-        vertical-align: top;
-        margin: 0;
-    }
+	.wisteria {
+		color: #8e44ad;
+	}
 
-    .direction,
-    .person {
-        position: inherit;
-        display: none;
-        opacity: 1;
-    }
+	.belize {
+		color: #2980b9;
+	}
 
-    .visible {
-        display: inline;
-    }
+	.pomegranate {
+		color: #c0392b;
+	}
 
-    .wisteria {
-        color: #8e44ad;
-    }
+	.green {
+		color: #16a085;
+	}
 
-    .belize {
-        color: #2980b9;
-    }
+	.midnight {
+		color: #2c3e50;
+	}
 
-    .pomegranate {
-        color: #c0392b;
-    }
+	.site-footer {
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		height: 45px;
+		text-align: center;
+	}
 
-    .green {
-        color: #16a085;
-    }
+	.site-footer>p {
+		font-size: 12px;
+	}
 
-    .midnight {
-        color: #2c3e50;
-    }
+	.refresh {
+		background: #FFF url(http://goo.gl/xDdF7X) center/36px no-repeat;
+		height: 56px;
+		width: 56px;
+		margin: 1em;
+		border-radius: 50%;
+		box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+		position: fixed;
+		top: 0;
+		right: 0;
+		cursor: pointer;
+	}
 
-    .site-footer {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 45px;
-        /* Height of the footer */
-        text-align: center;
-    }
+	@media all and (min-width: 960px) {
+		body {
+			font-size: 50px;
+		}
+		.text {
+			top: 30%;
+		}
+	}
 
-    .site-footer>p {
-        font-size: 12px;
-    }
+	@media all and (max-width: 959px) and (min-width: 600px) {
+		body {
+			font-size: 40px;
+		}
+		.text {
+			top: 30%;
+		}
+	}
+
+	@media all and (max-width: 599px) and (min-width: 50px) {
+		body {
+			font-size:30px;
+		}
+		.text {
+			top: 30%;
+		}
+	}
 </style>
 </head>
 
 <body>
-    <div class="page-wrap">
-        <div class="text">
-            <!--persons will be loaded here-->
-            <p class="all-persons">
-            </p>
-            </br>
-            <p class="all-directions">
-            </p>
-        </div>
-    </div>
-    <footer class="site-footer">
-        <p>Another thing made with <span class="pomegranate">❤︎</span> by <a href="https://www.linkedin.com/in/loizouandreas/">Andreas Loizou</a>. Find this on <a href="https://github.com/lack3r/The-Simpsons-Daily-Scrum">Github</a>.
-        </p>
-    </footer>
+	<div class="page-wrap">
+		<div class="text">
+			<!--persons will be loaded here-->
+			<p class="all-persons">
+			</p>
+		</br>
+		<p class="all-directions">
+		</p>
+	</div>
+</div>
+<footer class="site-footer">
+	<p>Another thing made with <span class="pomegranate">❤︎</span> by <a href="https://www.linkedin.com/in/loizouandreas/">Andreas Loizou</a>. Find this on <a href="https://github.com/lack3r/The-Simpsons-Daily-Scrum">Github</a>.
+	</p>
+</footer>
+<div class="refresh"></div>
 </body>
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-    var persons = ["Homer Simpson",
-        "Merge Simpson",
-        "Bart Simpson",
-        "Lisa Simpson",
-        "Maggie Simpson",
-    ]; //contains all persons.
-    var directions = ["Clockwise direction",
-        "Anticlockwise direction"
-    ]; //contains directions.
+	$.ajaxSetup({
+		beforeSend: function(xhr) {
+			if (xhr.overrideMimeType) {
+				xhr.overrideMimeType("application/json");
+			}
+		}
+	});
+	var directions;
+	var persons;
+	var currentPerson;
+	var colorIndex;
+	var currentDirection;
+	var colors = ["wisteria", "belize", "pomegranate", "green", "midnight"];
 
-    $.each(persons, function(i) {
-        $('.all-persons').append('<div class="person">' + persons[i] + '</div>');
-    });
-    $.each(directions, function(i) {
-        $('.all-directions').append('<div class="direction">' + directions[i] + '</div>');
-    });
+	loadPersons();
+	initialiseDirections();
 
-    var colors = ["wisteria", "belize", "pomegranate", "green", "midnight"];
+	function initialise() {
+		colorIndex = randomIndex(colors);
+		currentPerson = randomIndex(persons) + 1;
+		currentDirection = randomIndex(directions) + 1;
+		$('.person:nth-child(' + currentPerson + ')').addClass("visible").addClass(colors[colorIndex]);
+		$('.direction:nth-child(' + currentDirection + ')').addClass("visible").addClass(colors[colorIndex]);
+	}
 
-    var currentPerson = Math.floor((Math.random() * persons.length)) + 1;
-    var currentDirection = Math.floor((Math.random() * directions.length)) + 1;
-    var colorIndex = Math.floor((Math.random() * colors.length));
+	function reset() {
+		//  location.href = location.href;
+		$('.all-persons').children().removeClass().addClass("person");
+		$('.all-directions').children().removeClass().addClass("direction");
+	}
 
-    $('.person:nth-child(' + currentPerson + ')').addClass(colors[colorIndex]);
-    $('.person:nth-child(' + currentPerson + ')').addClass("visible");
-    $('.direction:nth-child(' + currentDirection + ')').addClass(colors[colorIndex]);
-    $('.direction:nth-child(' + currentDirection + ')').addClass("visible");
+	$('.refresh').on('click', function() {
+		reset();
+		initialise();
+	});
+
+	function randomIndex(array) {
+		return Math.floor((Math.random() * array.length));
+	}
+
+	/*Load JSON containing all persons*/
+	function loadPersons() {
+		persons = new Array()
+		$.getJSON('persons.json', function(data) {
+			$.each(data.persons, function(i) {
+				$('.all-persons').append('<div class="person">' + data.persons[i] + '</div>');
+				persons[i] = data.persons[i];
+			});
+			console.log('persons loaded');
+			initialise();
+
+		}).error(function() {
+			console.log('error: json not loaded');
+		});
+	}
+
+	function initialiseDirections() {
+		directions = ["Clockwise direction", "Anticlockwise direction"]; //contains directions.
+
+		$.each(directions, function(i) {
+			$('.all-directions').append('<div class="direction">' + directions[i] + '</div>');
+		});
+	}
 </script>
